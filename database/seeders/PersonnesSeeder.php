@@ -14,7 +14,6 @@ class PersonnesSeeder extends Seeder
     public function run(): void
     {
         DB::table('personnes')->insert([
-            //INSERT THE PICTURES LATER
             [
                 'id' => '1',
                 'nom' => 'Frank Darabont',
@@ -247,6 +246,7 @@ class PersonnesSeeder extends Seeder
                 'photo' => 'https://th.bing.com/th/id/OIP.IH-2DHjn6p1zVseoNu9maAHaKH?pid=ImgDet&rs=1',
                 'rolePrincipal' => 'Acteur',
             ],
+            
 
         ]);
     }

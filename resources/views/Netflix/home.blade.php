@@ -1,6 +1,29 @@
 @extends('layouts.app')
 
     @section('title',"films")
+    @section('css')
+        <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    @show
+
+    @section('menu')
+      <nav class="main-nav">                
+        <a href="#home">Home</a>
+        <a href="#Action">Action</a>
+        <a href="#Aventure">Aventure</a>
+        <a href="#Francais">Français</a>
+        <a href="#Allemand">Allemand</a>
+        <a class="btn btn-default" href="{{ route('Netflix.add') }}">Ajouter</a> 
+        <a class="btn btn-default" href="{{ route('Netflix.personnes') }}">Regarder Personne</a>     
+      </nav>
+    @endsection
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+        <script>
+          alert("success");
+        </script>
+    </div>
+    @endif
 
     @section('contenu')  
     <!-- MAIN CONTAINER -->
@@ -11,7 +34,7 @@
             @if (count($films))
               @foreach($films as $film)
                 @if($film->cote >=90)
-                  <a href=""><img src="{{$film->pochette}}" alt=""></a>
+                  <a href="{{ route('Netflix.films', [$film]) }}"><img src="{{$film->pochette}}" alt=""></a>
                 @endif
               @endforeach
             
@@ -22,12 +45,12 @@
       </div>
       
 
-      <h1 id="myList">Action</h1>
+      <h1 id="Action">Action</h1>
       <div class="box">
         @if (count($films))
           @foreach($films as $film)
             @if(strpos($film->type, 'Action') !== false)
-              <a href=""><img src="{{$film->pochette}}" alt=""></a>
+              <a href="{{ route('Netflix.films', [$film]) }}"><img src="{{$film->pochette}}" alt=""></a>
             @endif
           @endforeach
         
@@ -36,12 +59,12 @@
         @endif                  
       </div>
       
-      <h1 id="tvShows">Aventure</h1>
+      <h1 id="Aventure">Aventure</h1>
       <div class="box">
         @if (count($films))
           @foreach($films as $film)
             @if(strpos($film->type, 'Aventure') !== false)
-              <a href=""><img src="{{$film->pochette}}" alt=""></a>
+              <a href="{{ route('Netflix.films', [$film]) }}"><img src="{{$film->pochette}}" alt=""></a>
             @endif
           @endforeach
         
@@ -51,12 +74,12 @@
       </div>
       
 
-      <h1 id="movies">Français</h1>
+      <h1 id="Francais">Français</h1>
       <div class="box">
         @if (count($films))
           @foreach($films as $film)
             @if(strpos($film->langues, 'Français') !== false)
-              <a href=""><img src="{{$film->pochette}}" alt=""></a>
+              <a href="{{ route('Netflix.films', [$film]) }}"><img src="{{$film->pochette}}" alt=""></a>
             @endif
           @endforeach
         
@@ -65,12 +88,12 @@
         @endif            
       </div>
 
-      <h1 id="originals">Allemand</h1>
+      <h1 id="Allemand">Allemand</h1>
       <div class="box">
         @if (count($films))
           @foreach($films as $film)
             @if(strpos($film->langues, 'Allemand') !== false)
-              <a href=""><img src="{{$film->pochette}}" alt=""></a>
+              <a href="{{ route('Netflix.films', [$film]) }}"><img src="{{$film->pochette}}" alt=""></a>
             @endif
           @endforeach
         
@@ -78,5 +101,6 @@
             <p>Aucun films</p>
         @endif                
       </div>
+      
 
     @endsection

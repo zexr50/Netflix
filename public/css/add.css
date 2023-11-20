@@ -1,0 +1,107 @@
+:root {
+    --primary: #141414;
+    --light: #F3F3F3;
+    --dark: #686868;
+}
+  
+  /* Global Styles */
+  html, body {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary);
+    color: var(--light);
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    line-height: 1.6;
+    text-align: center;
+}
+  /* Header Styles */
+  header {
+    padding-top: 10px;
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--primary);
+    width: 100%;
+    margin-bottom: 10px;
+}
+  .main-nav a, .sub-nav a {
+    color: var(--light);
+    text-decoration: none;
+    margin: 0 15px;
+}
+  
+  .main-nav a:hover, .sub-nav a:hover {
+    color: var(--dark);
+}
+  
+  /* Main Container Styles */
+  .main-container {
+    padding: 50px;
+    margin-top: 100px;
+}
+
+.button
+{
+    padding: 10px 20px 10px 20px;
+    margin: 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #45a049;
+    color: white;
+    padding: 20px 30px 20px 30px;
+}
+
+
+  /* Link Section Styles */
+  .link {
+    padding: 50px;
+    }
+  
+  .sub-links ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+  
+  .sub-links a {
+    color: var(--dark);
+    text-decoration: none;
+}
+  
+  .sub-links a:hover {
+    text-decoration: underline;
+}
+  
+  .logos a {
+    padding: 10px;
+}
+  
+  .logo {
+    color: var(--dark);
+}
+  
+  /* Footer Styles */
+  footer {
+    padding: 20px;
+    text-align: center;
+    color: var(--dark);
+    margin: 10px;
+}

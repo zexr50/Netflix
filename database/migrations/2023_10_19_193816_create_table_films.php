@@ -21,7 +21,6 @@ return new class extends Migration
             $table->unsignedBigInteger('producteur');
             $table->integer('année');
             $table->string('lienVideo',100);
-            //ADD IN SEEDER
             $table->string('type',50);
             $table->string('brand',100);
             $table->integer('cote');
