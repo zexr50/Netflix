@@ -38,8 +38,7 @@
     @endif
     
     <h2>REALISATEUR</h2>
-    {{$film->realisateur->nom}}
-
+    <!--{$film->realisateur->nom}}-->
     
     @if(isset($film->personne[0]->photo))
     @foreach($film->personne as $photo)
