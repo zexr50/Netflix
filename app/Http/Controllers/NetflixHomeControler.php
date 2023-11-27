@@ -70,6 +70,22 @@ class NetflixHomeControler extends Controller
         return redirect()->route('Netflix.home');
 
     }
+    //DESTROY PERSONNE
+    public function destroyPersonne($id)
+    {
+        try{
+            $personne = Personne::findOrFail($id);
+            $personne->films()->detach();
+            $personne->delete();
+
+            return redirect()->route('Netflix.home')->with('success', "Suppression de " . $personne->nom . " réussi!");
+        }
+        catch(\Throwable $e){
+            Log::debug($e);
+            return redirect()->route('Netflix.home')->with('erreur', "Suppression de " . $personne->nom . " na pas fonctioner verifier que il n'est pas realisateur ou producteur.");
+        }
+        return redirect()->route('Netflix.home');
+    }
 
     //ADD FILM
     public function addFilm()
@@ -123,6 +139,21 @@ class NetflixHomeControler extends Controller
         }
         return redirect()->route('Netflix.home');
 
+    }
+    //DESTROY FILM
+    public function destroyFilm($id)
+    {
+        try{
+            $film = Film::findOrFail($id);
+            $film->personne()->detach();
+            $film->delete();
+            
+            return redirect()->route('Netflix.home')->with('message', "Suppression de " . $film->titre . "réussi!");
+        }
+        catch(\Throwable $e){
+            Log::debug($e);
+            return redirect()->route('Netflix.home');
+        }
     }
 
     //ADD FILM_PERSONNE

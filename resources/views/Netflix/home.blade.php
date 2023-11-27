@@ -24,6 +24,14 @@
         </script>
     </div>
     @endif
+    @if(session('erreur'))
+    <div class="alert alert-erreur">
+        {{ session('erreur') }}
+        <script>
+          alert("erreur");
+        </script>
+    </div>
+    @endif
 
     @section('contenu')  
     <!-- MAIN CONTAINER -->

@@ -16,4 +16,6 @@ class Personne extends Model
     {
         return $this->belongsToMany(Film::class);
     }
+
+
 }
