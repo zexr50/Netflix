@@ -17,14 +17,14 @@
     line-height: 1.4;
   }
   
-  #affiche {
-    max-width: 14vw;
-    width: 14vw;
-    height: 23vw;
+  img {
+    max-width: 100%;
+    width: 100%;
+    height: 80%;
   }
   
   h1 {
-    padding-top: 0px;  
+    padding-top: 60px;  
   }
   
   .wrapper {
@@ -34,7 +34,7 @@
   
   /* HEADER */
   header {
-    padding: 10px 20px 10px 20px;
+    padding: 20px 20px 0 20px;
     position: fixed;
     top: 0;
     display: grid;  
@@ -45,7 +45,6 @@
     background-color: var(--primary);
     width: 100%;
     margin-bottom: 0px;  
-    z-index: 1;
   }
   
   .netflixLogo {
@@ -71,13 +70,13 @@
   
   .main-nav {
     grid-area: mn;
-    padding: 7px 30px 0 20px;
+    padding: 0 30px 0 20px;
   }
   
   .main-nav a {
     color: var(--light);
     text-decoration: none;
-    margin: 5px;
+    margin: 5px;  
   }
   
   .main-nav a:hover {
@@ -86,7 +85,7 @@
   
   .sub-nav {
     grid-area: sb;
-    padding: 7px 40px 0 40px;
+    padding: 0 40px 0 40px;
   }
   
   .sub-nav a {
@@ -111,18 +110,15 @@
     grid-template-columns: repeat(6, minmax(100px, 1fr));
   }
   
-  .box div {
+  .box a {
     transition: transform .3s;  
-    width: fit-content;
-    height: fit-content;
   }
   
-  .box div:hover {
+  .box a:hover {
     transition: transform .3s;
-    -ms-transform: scale(1.1);
-    -webkit-transform: scale(1.1);  
-    transform: scale(1.1);
-    
+    -ms-transform: scale(1.4);
+    -webkit-transform: scale(1.4);  
+    transform: scale(1.4);
   }
   
   .box img {
@@ -168,12 +164,17 @@
     color: var(--dark);
     margin: 10px;
   }
-  
+
+  .box a:hover img {
+    transform: scale(1.1);
+    transition: transform 0.3s;
+  }
+
   #name{
     padding: 0px;
     font-size: 12pt;
   }
-
+  
   /* MEDIA QUERIES */
   
   @media(max-width: 900px) {
@@ -288,9 +289,5 @@
       text-align: center;
       font-size: 15px;
     }
-  
-    
-  
-    
      
   }

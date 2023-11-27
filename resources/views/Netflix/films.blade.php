@@ -33,7 +33,7 @@
     @if(isset($film->personne[0]->photo))
     @foreach($film->personne as $photo)
         <h1>{{$photo->nom}}</h1>
-        <img src="{{$photo->photo}}"/>
+        <a href="{{ route('Netflix.peoples', [$photo]) }}"><img src="{{$photo->photo}}" alt=""></a>
     @endforeach
     @else
         <h1>No photos available.</h1>
