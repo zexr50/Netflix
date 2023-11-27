@@ -2,7 +2,7 @@
 
     @section('title',"personnes")
     @section('css')
-        <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/personne.css') }}">
     @show
     @section('menu')
       <nav class="main-nav">                
@@ -22,7 +22,10 @@
             @if (count($personnes))
               @foreach($personnes as $personne)
                 @if($personne->dateNaissance < '1950-01-01')
+                <div style="text-align:center;">
+                  <h2 id="name">{{$personne->nom}}</h2>
                   <a href="{{ route('Netflix.peoples', [$personne]) }}"><img src="{{$personne->photo}}" alt=""></a>
+                </div>
                 @endif
               @endforeach
             
@@ -36,7 +39,10 @@
             @if (count($personnes))
               @foreach($personnes as $personne)
                 @if($personne->rolePrincipal == 'Réalisateur')
+                <div style="text-align:center;">
+                  <h2 id="name">{{$personne->nom}}</h2>
                   <a href="{{ route('Netflix.peoples', [$personne]) }}"><img src="{{$personne->photo}}" alt=""></a>
+                </div>
                 @endif
               @endforeach
             
@@ -50,7 +56,10 @@
             @if (count($personnes))
               @foreach($personnes as $personne)
                 @if($personne->rolePrincipal == 'Acteur')
+                <div style="text-align:center;">
+                  <h2 id="name">{{$personne->nom}}</h2>
                   <a href="{{ route('Netflix.peoples', [$personne]) }}"><img src="{{$personne->photo}}" alt=""></a>
+                </div>
                 @endif
               @endforeach
             
@@ -64,7 +73,10 @@
             @if (count($personnes))
               @foreach($personnes as $personne)
                 @if($personne->rolePrincipal == 'Producteur')
+                <div style="text-align:center;">
+                  <h2 id="name">{{$personne->nom}}</h2>
                   <a href="{{ route('Netflix.peoples', [$personne]) }}"><img src="{{$personne->photo}}" alt=""></a>
+                </div>
                 @endif
               @endforeach
             
@@ -78,7 +90,10 @@
             @if (count($personnes))
               @foreach($personnes as $personne)
                 @if(strpos($personne->LieuNaissance, 'USA') !== false)
+                <div style="text-align:center;">
+                  <h2 id="name">{{$personne->nom}}</h2>
                   <a href="{{ route('Netflix.peoples', [$personne]) }}"><img src="{{$personne->photo}}" alt=""></a>
+                </div>
                 @endif
               @endforeach
             
