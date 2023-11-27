@@ -15,6 +15,11 @@
             <p>Lieu de naissance:{{ $personne->LieuNaissance }}</p>
             <p>Role principal: {{ $personne->rolePrincipal }}</p>
             <a href="{{ route('Netflix.modPersonne' , [$personne]) }}"><button class="button">Modifier</button></a>
+            <form method="post" action="{{ route('Netflix.destroyPersonne', [$personne->id]) }}">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="button">SUPPRIMER</button>
+            </form>
         </div>
     @else
         <p>La personne n'existe pas</p>

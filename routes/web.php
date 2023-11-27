@@ -43,6 +43,9 @@ Route::get('/peoples/{personne}/modifier/',
 [NetflixHomeControler::class, 'modPersonne'])->name('Netflix.modPersonne');
 Route::patch('/peoples/{personne}/modifier/' ,
 [NetflixHomeControler::class, 'updatePersonne'])->name('Netflix.updatePersonne');
+Route::delete('/peoples/{id}',
+[NetflixHomeControler::class, 'destroyPersonne'])->name('Netflix.destroyPersonne');
+
 
 
 //ADD|STORE|MODIFY|PATCH|DELETE FILM
@@ -54,6 +57,8 @@ Route::get('/films/{film}/modifier/',
 [NetflixHomeControler::class, 'modFilm'])->name('Netflix.modFilm');
 Route::patch('/films/{film}/modifier' ,
 [NetflixHomeControler::class, 'updateFilm'])->name('Netflix.updateFilm');
+Route::delete('/films/{id}',
+[NetflixHomeControler::class, 'destroyFilm']) ->name('Netflix.destroyFilm');
 
 
 

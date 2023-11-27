@@ -25,6 +25,13 @@
             <p>langues: {{ $film->langues}}</p>
             <p>sous titres: {{ $film->sousTitres}}</p>
             <a href="{{ route('Netflix.modFilm' , [$film]) }}"><button class="button">Modifier</button></a>
+
+            <form method="post" action="{{ route('Netflix.destroyFilm', [$film->id]) }}">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="button">SUPPRIMER</button>
+            </form>
+
         </div>
     @else
         <p>Le film n'existe pas</p>
