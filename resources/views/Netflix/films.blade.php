@@ -10,12 +10,12 @@
     <h1>Page du film {{ $film->titre }}</h1>
     @if (isset($film))
         <div>
-            <h1>{{ $film->titre }}</h1>
-            <img src="{{ $film->pochette }}"/>
-            <p>resume: {{ $film->resume }}</p>
-            <p>durée: {{ $film->durée}}</p>
-            <p>realisateur: {{ $film->realisateur}}</p>
-            <p>producteur: {{ $film->producteur}}</p>
+            <h1 id="titre">{{ $film->titre }}</h1>
+            <img id="pochette" src="{{ $film->pochette }}"/>
+            <p id="resume">resume: {{ $film->resume }}</p>
+            <p id="duree">durée: {{ $film->durée}}</p>
+            <p id="realisateur">realisateur: {{ $film->realisateur}}</p>
+            <p id="producteur">producteur: {{ $film->producteur}}</p>
             <p>année: {{ $film->année}}</p>
             <iframe width="420" height="315"src="{{ $film->lienVideo}}"></iframe>
             <p>type: {{ $film->type}}</p>
@@ -30,9 +30,12 @@
         <p>Le film n'existe pas</p>
     @endif
     
+    <h2>REALISATEUR</h2>
+    {{$film->realisateur->nom}}
+
+    
     @if(isset($film->personne[0]->photo))
     @foreach($film->personne as $photo)
-        <h1>{{$photo->nom}}</h1>
         <a href="{{ route('Netflix.peoples', [$photo]) }}"><img src="{{$photo->photo}}" alt=""></a>
     @endforeach
     @else
