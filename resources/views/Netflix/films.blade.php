@@ -14,8 +14,6 @@
             <img id="pochette" src="{{ $film->pochette }}"/>
             <p id="resume">resume: {{ $film->resume }}</p>
             <p id="duree">durée: {{ $film->durée}}</p>
-            <p id="realisateur">realisateur: {{ $film->realisateur}}</p>
-            <p id="producteur">producteur: {{ $film->producteur}}</p>
             <p>année: {{ $film->année}}</p>
             <iframe width="420" height="315"src="{{ $film->lienVideo}}"></iframe>
             <p>type: {{ $film->type}}</p>
@@ -38,11 +36,20 @@
     @endif
     
     <h2>REALISATEUR</h2>
-    {{$film->realisateur->nom}}
+    <h3 id="name">{{$film->realisateur->nom}}</h3>
+    <a href="{{ route('Netflix.peoples', [$film->realisateur]) }}"><img src="{{$film->realisateur->photo}}" alt=""></a>
 
-    
+    <h2>PRODUCTEUR</h2>
+    <h3 id="name">{{$film->producteur->nom}}</h3>
+    <a href="{{ route('Netflix.peoples', [$film->producteur]) }}"><img src="{{$film->producteur->photo}}" alt=""></a>
+
+    <h2>ACTEURS</h2>
     @if(isset($film->personne[0]->photo))
     @foreach($film->personne as $photo)
+        @if($photo->id == $film->realisateur->id || $photo->id == $film->producteur->id)
+            @continue
+        @endif
+        <h3 id="name">{{$photo->nom}}</h3>
         <a href="{{ route('Netflix.peoples', [$photo]) }}"><img src="{{$photo->photo}}" alt=""></a>
     @endforeach
     @else

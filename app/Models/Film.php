@@ -16,5 +16,14 @@ class Film extends Model
     {
         return $this->belongsToMany(Personne::class);
     }
+    public function producteur()
+    {
+        return $this->belongsTo(Personne::class,"producteur_id");
+    }
+    public function realisateur()
+    {
+        return $this->belongsTo(Personne::class,"realisateur_id");
+    }
+
     
 }

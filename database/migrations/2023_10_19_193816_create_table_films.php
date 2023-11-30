@@ -17,8 +17,6 @@ return new class extends Migration
             $table->text('resume',100);
             $table->string('pochette',200);
             $table->string('durée',25);
-            $table->unsignedBigInteger('realisateur');
-            $table->unsignedBigInteger('producteur');
             $table->integer('année');
             $table->string('lienVideo',100);
             $table->string('type',50);
@@ -29,8 +27,8 @@ return new class extends Migration
             $table->text('sousTitres',400);
             //ADD TO SEEDER
             $table->timestamps();
-            $table->foreign('realisateur')->references('id')->on('personnes');
-            $table->foreign('producteur')->references('id')->on('personnes');
+            $table->foreignId('realisateur_id')->constrained('personnes');
+            $table->foreignId('producteur_id')->constrained('personnes');
         });
     }
 
