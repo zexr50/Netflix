@@ -23,6 +23,22 @@ class UsagerSeeder extends Seeder
                 'nom'=>'Min',
                 'role'=>'admin'
             ],
+            [
+                'nomUsager'=>'normal',
+                'password'=> Hash::make('normal'),
+                'email'=>'normal@normalmail.norm',
+                'prenom'=>'Norman',
+                'nom'=>'Normal',
+                'role'=>'normal'
+            ],
+            [
+                'nomUsager'=>'enfant',
+                'password'=> Hash::make('enfant'),
+                'email' =>'enfant@kidsmail.kid',
+                'prenom'=>'Kid',
+                'nom' =>'Enfant',
+                'role' => 'enfant'
+            ]
             ]);
     }
 }
