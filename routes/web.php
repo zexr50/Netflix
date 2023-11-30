@@ -69,4 +69,11 @@ Route::post('/add/FilmPersonne',
 [NetflixHomeControler::class, 'storeFilmPersonne'])->name('Netflix.storeFilmPersonne');
 
 
+//ROUTE ACCOUNT MANAGMENT
 
+Route::get('/showLogin',
+[NetflixHomeControler::class, 'showLogin']) ->name('Netflix.showLogin');
+Route::post('/Login',
+[NetflixHomeControler::class, 'Login']) ->name('Netflix.Login');
+Route::post('/Logout',
+[NetflixHomeControler::class, 'Logout']) ->name('Netflix.Logout');
