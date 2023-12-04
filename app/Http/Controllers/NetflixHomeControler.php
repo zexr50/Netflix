@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Requests\PersonneRequest;
 use App\Http\Requests\FilmRequest;
 use App\Http\Requests\FilmPersonneRequest;
+use Illuminate\Support\Facades\Auth;
 
 class NetflixHomeControler extends Controller
 {
@@ -200,4 +201,21 @@ class NetflixHomeControler extends Controller
         $films = Film::all();
         return View('Netflix.peoples', compact('film'));
     }
+
+    //Shows login form
+    public function showLogin()
+    {
+        return View('Netflix.showLogin');
+    }
+
+    public function login(Request $request)
+{
+    $reussi = Auth::attempt(['nomUsager' => $request->nomUsager, 'password' => $request->password]);
+
+    if ($reussi) {
+        return redirect()->route('Netflix.home')->with('success', "Connexion réussie");
+    } else {
+        return redirect()->route('Netflix.showLogin')->with('erreur', "Informations invalides");
+    }
+}
 }
