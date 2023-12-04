@@ -15,6 +15,18 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next): Response
     {
+        $user = $request->user();
+
+        if (!$user) {
+            if (!$request->is('login')) {
+                return redirect()->route('Netflix.Login');
+            }
+        }else {
+            if (!in_array($user->role, $roles)){
+                return redirect()->route('Netflix.Login');
+            }
+        }
+
         return $next($request);
     }
 }
