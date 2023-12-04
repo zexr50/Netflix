@@ -19,7 +19,7 @@ class PersonnesSeeder extends Seeder
                 'nom' => 'Frank Darabont',
                 'dateNaissance' => '1959-01-28',
                 'LieuNaissance' => 'Montbéliard, France',
-                'photo' => 'https://th.bing.com/th/id/R.bccd9a38b9bac4e02775455f326a1195?rik=inhjhLVJ%2bvGNow&pid=ImgRaw&r=0',
+                'photo' => 'Frank Darabont',
                 'rolePrincipal' => 'Réalisateur',
             ],
             [

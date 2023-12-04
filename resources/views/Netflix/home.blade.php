@@ -44,7 +44,13 @@
                 @if($film->cote >=90)
                 <div style="text-align:center;">
                   <h2 id="name">{{$film->titre}}</h2>
-                  <a href="{{ route('Netflix.films', [$film]) }}"><img id="affiche" src="{{$film->pochette}}" alt=""></a>
+                  <a href="{{ route('Netflix.films', [$film]) }}">
+                    <?php if (str_starts_with($film->pochette, 'http')) {?>
+                        <img id="affiche" src="{{ $film->pochette }}" alt="{{ $film->titre }}" title="{{ $film->titre }}">
+                    <?php } else {?>
+                        <img id="affiche" src="{{ asset('img/films/' . $film->pochette) }}" alt="{{ $film->titre }}" title="{{ $film->titre }}">
+                    <?php }?>
+                  </a>
                 </div>
                 @endif
               @endforeach
@@ -63,7 +69,13 @@
             @if(strpos($film->type, 'Action') !== false)
             <div style="text-align:center;">
               <h2 id="name">{{$film->titre}}</h2>
-              <a href="{{ route('Netflix.films', [$film]) }}"><img id="affiche" src="{{$film->pochette}}" alt=""></a>
+              <a href="{{ route('Netflix.films', [$film]) }}">
+                    <?php if (str_starts_with($film->pochette, 'http')) {?>
+                        <img id="affiche" src="{{ $film->pochette }}" alt="{{ $film->titre }}" title="{{ $film->titre }}">
+                    <?php } else {?>
+                        <img id="affiche" src="{{ asset('img/films/' . $film->pochette) }}" alt="{{ $film->titre }}" title="{{ $film->titre }}">
+                    <?php }?>
+              </a>
             </div>
             @endif
           @endforeach
@@ -80,7 +92,13 @@
             @if(strpos($film->type, 'Aventure') !== false)
             <div style="text-align:center;">
               <h2 id="name">{{$film->titre}}</h2>
-              <a href="{{ route('Netflix.films', [$film]) }}"><img id="affiche" src="{{$film->pochette}}" alt=""></a>
+              <a href="{{ route('Netflix.films', [$film]) }}">
+                <?php if (str_starts_with($film->pochette, 'http')) {?>
+                    <img id="affiche" src="{{ $film->pochette }}" alt="{{ $film->titre }}" title="{{ $film->titre }}">
+                <?php } else {?>
+                    <img id="affiche" src="{{ asset('img/films/' . $film->pochette) }}" alt="{{ $film->titre }}" title="{{ $film->titre }}">
+                <?php }?>
+              </a>
             </div>
             @endif
           @endforeach
@@ -98,7 +116,13 @@
             @if(strpos($film->langues, 'Français') !== false)
             <div style="text-align:center;">
               <h2 id="name">{{$film->titre}}</h2>
-              <a href="{{ route('Netflix.films', [$film]) }}"><img id="affiche" src="{{$film->pochette}}" alt=""></a>
+              <a href="{{ route('Netflix.films', [$film]) }}">
+                <?php if (str_starts_with($film->pochette, 'http')) {?>
+                    <img id="affiche" src="{{ $film->pochette }}" alt="{{ $film->titre }}" title="{{ $film->titre }}">
+                <?php } else {?>
+                    <img id="affiche" src="{{ asset('img/films/' . $film->pochette) }}" alt="{{ $film->titre }}" title="{{ $film->titre }}">
+                <?php }?>
+              </a>
             </div>
             @endif
           @endforeach
@@ -115,7 +139,13 @@
             @if(strpos($film->langues, 'Allemand') !== false)
             <div style="text-align:center;">
               <h2 id="name">{{$film->titre}}</h2>
-              <a href="{{ route('Netflix.films', [$film]) }}"><img id="affiche" src="{{$film->pochette}}" alt=""></a>
+              <a href="{{ route('Netflix.films', [$film]) }}">
+                <?php if (str_starts_with($film->pochette, 'http')) {?>
+                    <img id="affiche" src="{{ $film->pochette }}" alt="{{ $film->titre }}" title="{{ $film->titre }}">
+                <?php } else {?>
+                    <img id="affiche" src="{{ asset('img/films/' . $film->pochette) }}" alt="{{ $film->titre }}" title="{{ $film->titre }}">
+                <?php }?>
+              </a>
             </div>
             @endif
           @endforeach

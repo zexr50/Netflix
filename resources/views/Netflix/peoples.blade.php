@@ -10,7 +10,11 @@
     @if (isset($personne))
         <div>
             <h1>Nom: {{ $personne->nom }}</h1>
-            <img src="{{$personne->photo}}">
+            <?php if (str_starts_with($personne->photo, 'http')) {?>
+                <img src="{{ $personne->photo }}" alt="{{ $personne->nom }}" title="{{ $personne->nom }}">
+            <?php } else {?>
+                <img src="{{ asset('img/personnes/' . $personne->photo) }}" alt="{{ $personne->nom }}" title="{{ $personne->nom }}">
+            <?php }?>
             <p>Date de naissance: {{ $personne->dateNaissance }}</p>
             <p>Lieu de naissance:{{ $personne->LieuNaissance }}</p>
             <p>Role principal: {{ $personne->rolePrincipal }}</p>
@@ -26,7 +30,11 @@
     @endif
     @foreach($personne->films as $film)
         <h1>{{$film->titre}}</h1>
-        <img src="{{$film->pochette}}"/>
+        <?php if (str_starts_with($film->pochette, 'http')) {?>
+            <img id="affiche" src="{{ $film->pochette }}" alt="{{ $film->titre }}" title="{{ $film->titre }}">
+        <?php } else {?>
+            <img id="affiche" src="{{ asset('img/films/' . $film->pochette) }}" alt="{{ $film->titre }}" title="{{ $film->titre }}">
+        <?php }?>
     @endforeach
     
 @endsection

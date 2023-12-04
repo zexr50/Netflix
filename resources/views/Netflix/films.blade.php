@@ -11,7 +11,11 @@
     @if (isset($film))
         <div>
             <h1 id="titre">{{ $film->titre }}</h1>
-            <img id="pochette" src="{{ $film->pochette }}"/>
+            <?php if (str_starts_with($film->pochette, 'http')) {?>
+                <img id="affiche" src="{{ $film->pochette }}" alt="{{ $film->titre }}" title="{{ $film->titre }}">
+            <?php } else {?>
+                <img id="affiche" src="{{ asset('img/films/' . $film->pochette) }}" alt="{{ $film->titre }}" title="{{ $film->titre }}">
+            <?php }?>
             <p id="resume">resume: {{ $film->resume }}</p>
             <p id="duree">durée: {{ $film->durée}}</p>
             <p>année: {{ $film->année}}</p>
@@ -37,11 +41,23 @@
     
     <h2>REALISATEUR</h2>
     <h3 id="name">{{$film->realisateur->nom}}</h3>
-    <a href="{{ route('Netflix.peoples', [$film->realisateur]) }}"><img src="{{$film->realisateur->photo}}" alt=""></a>
+    <a href="{{ route('Netflix.peoples', [$film->realisateur]) }}">
+        <?php if (str_starts_with($film->realisateur->photo, 'http')) {?>
+            <img src="{{ $film->realisateur->photo }}" alt="{{ $film->realisateur->nom }}" title="{{ $film->realisateur->nom }}">
+        <?php } else {?>
+            <img src="{{ asset('img/personnes/' . $film->realisateur->photo) }}" alt="{{ $film->realisateur->nom }}" title="{{ $film->realisateur->nom }}">
+        <?php }?>
+    </a>
 
     <h2>PRODUCTEUR</h2>
     <h3 id="name">{{$film->producteur->nom}}</h3>
-    <a href="{{ route('Netflix.peoples', [$film->producteur]) }}"><img src="{{$film->producteur->photo}}" alt=""></a>
+    <a href="{{ route('Netflix.peoples', [$film->producteur]) }}">
+        <?php if (str_starts_with($film->producteur->photo, 'http')) {?>
+            <img src="{{ $film->producteur->photo }}" alt="{{ $film->producteur->nom }}" title="{{ $film->producteur->nom }}">
+        <?php } else {?>
+            <img src="{{ asset('img/personnes/' . $film->producteur->photo) }}" alt="{{ $film->producteur->nom }}" title="{{ $film->producteur->nom }}">
+        <?php }?>
+    </a>
 
     <h2>ACTEURS</h2>
     @if(isset($film->personne[0]->photo))
@@ -50,7 +66,13 @@
             @continue
         @endif
         <h3 id="name">{{$photo->nom}}</h3>
-        <a href="{{ route('Netflix.peoples', [$photo]) }}"><img src="{{$photo->photo}}" alt=""></a>
+        <a href="{{ route('Netflix.peoples', [$photo]) }}">
+            <?php if (str_starts_with($photo->photo, 'http')) {?>
+                <img src="{{ $photo->photo }}" alt="{{ $photo->nom }}" title="{{ $photo->nom }}">
+            <?php } else {?>
+                <img src="{{ asset('img/personnes/' . $photo->photo) }}" alt="{{ $photo->nom }}" title="{{ $photo->nom }}">
+            <?php }?>
+        </a>
     @endforeach
     @else
         <h1>No photos available.</h1>
