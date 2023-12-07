@@ -17,16 +17,18 @@
             <textarea class="form-control" id="resume" placeholder="Résumé du film" name="resume" required></textarea>
 
             <label for="pochette">Pochette</label>
-            <input type="text" class="form-control" id="pochette" placeholder="URL de la pochette" name="pochette" required>
+            <input type="file" class="form-control-file" id="pochette" placeholder="URL de la pochette" name="pochette" required>
 
             <label for="duree">Durée</label>
             <input type="text" class="form-control" id="duree" placeholder="Durée du film" name="durée" required>
 
             <label for="realisateur">Réalisateur</label>
-            <input type="text" class="form-control" id="realisateur" placeholder="Réalisateur du film [id]" name="realisateur" required>
+            <input type="text" class="form-control" id="realisateur_id" placeholder="Réalisateur du film [id]" name="realisateur_id" required>
+            <!-- CHANGE TO SELECT -->
 
             <label for="producteur">Producteur</label>
-            <input type="text" class="form-control" id="producteur" placeholder="Producteur du film [id]" name="producteur" required>
+            <input type="text" class="form-control" id="producteur_id" placeholder="Producteur du film [id]" name="producteur_id" required>
+            <!-- CHANGE TO SELECT -->
 
             <label for="annee">Année</label>
             <input type="text" class="form-control" id="annee" placeholder="Année de sortie" name="année" required>

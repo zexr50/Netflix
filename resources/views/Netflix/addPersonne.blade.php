@@ -20,7 +20,7 @@
             <input type="text" class="form-control" id="lieuNaissance" placeholder="Lieu de naissance" name="LieuNaissance" required>
 
             <label for="photo">Photo</label>
-            <input type="text" class="form-control" id="photo" placeholder="photo de la personne" name="photo" required>
+            <input type="file" class="form-control-file" id="photo" placeholder="photo de la personne" name="photo" required>
 
             <label for="rolePrincipal">Rôle principal</label>
             <input type="text" class="form-control" id="rolePrincipal" placeholder="Rôle principal" name="rolePrincipal" required>

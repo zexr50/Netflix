@@ -33,10 +33,22 @@ class NetflixHomeControler extends Controller
         return View('Netflix.addPersonne');
     }
     //STORE PERSONNE
-    public function storePersonne(PersonneRequest $request)
+    public function storePersonne(Request $request)
     {
+
         try {
             $personne = new Personne($request->all());
+            $uploadedFile = $request->file('photo');
+            $nomFichierUnique = str_replace(' ', '_', $personne->nom) . '-' . uniqid() . '.' . $uploadedFile->extension();
+
+            try {
+                $request->photo->move(public_path('img/personnes'), $nomFichierUnique);
+            }
+            catch(\Symfony\Component\HttpFoundation\File\Exception\FileException $e) {
+                Log::error("Erreur lors du téléversement du fichier. ", [$e]);
+            }
+
+            $personne->photo = $nomFichierUnique;
             $personne->save();
             return redirect()->route('Netflix.home')->with('success', 'Personne ajoutée avec succès!');
             
@@ -94,9 +106,30 @@ class NetflixHomeControler extends Controller
         return View('Netflix.addFilm');
     }
     //STORE FILM
-    public function storeFilm(FilmRequest $request)
+    public function storeFilm(Request $request)
     {
         try {
+
+
+            $Film = new Film($request->all());
+            $uploadedFile = $request->file('pochette');
+            $nomFichierUnique = str_replace(' ', '_', $Film->titre) . '-' . uniqid() . '.' . $uploadedFile->extension();
+
+            try {
+                $request->pochette->move(public_path('img/films'), $nomFichierUnique);
+            }
+            catch(\Symfony\Component\HttpFoundation\File\Exception\FileException $e) {
+                Log::error("Erreur lors du téléversement du fichier. ", [$e]);
+            }
+
+            $Film->pochette = $nomFichierUnique;
+            $Film->save();
+            return redirect()->route('Netflix.home')->with('success', 'Personne ajoutée avec succès!');
+
+
+
+
+
             $Film = new Film($request->all());
             $Film->save();
             return redirect()->route('Netflix.home')->with('success', 'Film ajoutée avec succès!');;
@@ -120,8 +153,8 @@ class NetflixHomeControler extends Controller
             $film->resume = $request->resume;
             $film->pochette = $request->pochette;
             $film->durée = $request->durée;
-            $film->realisateur = $request->realisateur;
-            $film->producteur = $request->producteur;
+            $film->realisateur_id = $request->realisateur_id;
+            $film->producteur_id = $request->producteur_id;
             $film->année = $request->année;
             $film->lienVideo = $request->lienVideo;
             $film->type = $request->type;
