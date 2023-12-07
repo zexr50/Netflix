@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="icon" type="image/x-icon" href="https://www.pngarts.com/explore/15581">/*MAY NEED CHANGE */
+    <link rel="icon" type="image/x-icon" href="https://www.pngarts.com/explore/15581">
     <title>@yield('title')</title>
     @yield('css')
 </head>
@@ -18,7 +18,8 @@
       <nav class="sub-nav">
         <a href="#"><i class="fas fa-search sub-nav-logo"></i></a>
         <a href="#"><i class="fas fa-bell sub-nav-logo"></i></a>
-        <a href="{{ route('Netflix.showLogin') }}">Account</a>        
+        <a href="{{ route('Netflix.showLogin') }}">Login</a>
+        @auth <a href="{{ route('Netflix.Logout') }}">Log Out</a> @endauth     
       </nav>      
     </header>
 

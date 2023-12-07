@@ -13,17 +13,17 @@ class CheckRole
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, ...$roles): Response
     {
         $user = $request->user();
 
         if (!$user) {
             if (!$request->is('login')) {
-                return redirect()->route('Netflix.Login');
+                return redirect()->route('Netflix.showLogin');
             }
         }else {
             if (!in_array($user->role, $roles)){
-                return redirect()->route('Netflix.Login');
+                return redirect()->route('Netflix.showLogin');
             }
         }
 

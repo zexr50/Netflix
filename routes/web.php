@@ -32,39 +32,39 @@ Route::get('/peoples/{personne}/',
 
 //ADD PAGE
 Route::get('/add',
-[NetflixHomeControler::class, 'add'])->name('Netflix.add');
+[NetflixHomeControler::class, 'add'])->name('Netflix.add')->middleware('CheckRole:admin');
 
 //ADD|STORE|MODIFY|PATCH|DELETE PERSONNE
 Route::get('/add/Personne',
-[NetflixHomeControler::class, 'addPersonne'])->name('Netflix.addPersonne');
+[NetflixHomeControler::class, 'addPersonne'])->name('Netflix.addPersonne')->middleware('CheckRole:admin');
 Route::post('/add/Personne',
 [NetflixHomeControler::class, 'storePersonne'])->name('Netflix.storePersonne');
 Route::get('/peoples/{personne}/modifier/',
-[NetflixHomeControler::class, 'modPersonne'])->name('Netflix.modPersonne');
+[NetflixHomeControler::class, 'modPersonne'])->name('Netflix.modPersonne')->middleware('CheckRole:admin');
 Route::patch('/peoples/{personne}/modifier/' ,
 [NetflixHomeControler::class, 'updatePersonne'])->name('Netflix.updatePersonne');
 Route::delete('/peoples/{id}',
-[NetflixHomeControler::class, 'destroyPersonne'])->name('Netflix.destroyPersonne');
+[NetflixHomeControler::class, 'destroyPersonne'])->name('Netflix.destroyPersonne')->middleware('CheckRole:admin');
 
 
 
 //ADD|STORE|MODIFY|PATCH|DELETE FILM
 Route::get('/add/Film',
-[NetflixHomeControler::class, 'addFilm'])->name('Netflix.addFilm');
+[NetflixHomeControler::class, 'addFilm'])->name('Netflix.addFilm')->middleware('CheckRole:admin');
 Route::post('/add/Film',
 [NetflixHomeControler::class, 'storeFilm'])->name('Netflix.storeFilm');
 Route::get('/films/{film}/modifier/',
-[NetflixHomeControler::class, 'modFilm'])->name('Netflix.modFilm');
+[NetflixHomeControler::class, 'modFilm'])->name('Netflix.modFilm')->middleware('CheckRole:admin');
 Route::patch('/films/{film}/modifier' ,
 [NetflixHomeControler::class, 'updateFilm'])->name('Netflix.updateFilm');
 Route::delete('/films/{id}',
-[NetflixHomeControler::class, 'destroyFilm']) ->name('Netflix.destroyFilm');
+[NetflixHomeControler::class, 'destroyFilm']) ->name('Netflix.destroyFilm')->middleware('CheckRole:admin');
 
 
 
 //ADD|STORE|DELETE LIEN FILM PERSONNE
 Route::get('/add/FilmPersonne',
-[NetflixHomeControler::class, 'addFilmPersonne'])->name('Netflix.addFilmPersonne');
+[NetflixHomeControler::class, 'addFilmPersonne'])->name('Netflix.addFilmPersonne')->middleware('CheckRole:admin');
 Route::post('/add/FilmPersonne',
 [NetflixHomeControler::class, 'storeFilmPersonne'])->name('Netflix.storeFilmPersonne');
 
@@ -75,5 +75,5 @@ Route::get('/showLogin',
 [NetflixHomeControler::class, 'showLogin']) ->name('Netflix.showLogin');
 Route::post('/Login',
 [NetflixHomeControler::class, 'Login']) ->name('Netflix.Login');
-Route::post('/Logout',
+Route::get('/Logout',
 [NetflixHomeControler::class, 'Logout']) ->name('Netflix.Logout');

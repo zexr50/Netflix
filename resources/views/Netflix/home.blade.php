@@ -12,7 +12,9 @@
         <a href="#Aventure">Aventure</a>
         <a href="#Francais">Français</a>
         <a href="#Allemand">Allemand</a>
-        <a class="btn btn-default" href="{{ route('Netflix.add') }}">Ajouter</a> 
+        @auth
+          <a class="btn btn-default" href="{{ route('Netflix.add') }}">Ajouter</a> 
+        @endauth
         <a class="btn btn-default" href="{{ route('Netflix.personnes') }}">Regarder Personne</a>     
       </nav>
     @endsection

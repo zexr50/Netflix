@@ -208,14 +208,20 @@ class NetflixHomeControler extends Controller
         return View('Netflix.showLogin');
     }
 
-    public function login(Request $request)
-{
-    $reussi = Auth::attempt(['nomUsager' => $request->nomUsager, 'password' => $request->password]);
-
-    if ($reussi) {
-        return redirect()->route('Netflix.home')->with('success', "Connexion réussie");
-    } else {
-        return redirect()->route('Netflix.showLogin')->with('erreur', "Informations invalides");
+    public function Logout()
+    {
+        Auth::guard('web')->logout();
+        return redirect()->route('Netflix.home');
     }
-}
+
+    public function Login(Request $request)
+    {
+        $reussi = Auth::attempt(['nomUsager' => $request->nomUsager, 'password' => $request->password]);
+
+        if ($reussi) {
+            return redirect()->route('Netflix.home')->with('success', "Connexion réussie");
+        } else {
+            return redirect()->route('Netflix.showLogin')->with('erreur', "Informations invalides");
+        }
+    }
 }
